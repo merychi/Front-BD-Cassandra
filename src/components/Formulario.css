@@ -1,0 +1,149 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  height: 100vh;           
+  margin: 0;
+  position: relative;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('src/assets/Netflix-1000x563_waifu2x_photo_noise3_scale2.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.566);
+    z-index: 1;
+  }
+
+form {
+  background-color: #ececec;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.983);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1;
+}
+
+h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #282727;
+  margin-bottom: 30px;
+}
+
+
+.input-container {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper .input-icon {
+  position: absolute;
+  left: 10px; 
+  color: #e0813d;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+input {
+    padding-top: 12px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    border: 0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-style: italic;
+    width: 100%;
+}
+
+input:focus {
+    border-color: #df7c36;  
+    outline: 2px solid #df7c36;  
+  }
+
+button {
+  padding: 10px;
+  font-size: 17px;
+  color: #ffffff;
+  background-color: #e0813d;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(218, 90, 10);
+  color: #f0ceb6;
+}
+
+/* Estilo para la sección de la cuenta */
+.account-question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.account-question a {
+  font-weight: bolder;
+  color: #eda36e;
+  text-decoration: none;
+}
+
+.account-question a:hover {
+  text-decoration: underline;
+}
+
+p {
+  padding-top: 2px;
+  padding-bottom: 5px;
+  margin: 0;
+  font-size: 14px;
+  color: #3a3a3a;
+}
+
+.error-message {
+  
+  color: red;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 14px;
+  margin-top: 0px;
+}
