@@ -82,7 +82,7 @@ export const Register = () => {
         <div className="account-question">
           <p>¿Ya tienes una cuenta?</p>
           <p>
-            <Link to="/">Ingresa aquí</Link>
+            <Link to="/login">Ingresa aquí</Link>
           </p>
         </div>
       </form>

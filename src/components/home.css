@@ -1,0 +1,82 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative; /* Contexto para los elementos con 'absolute' */
+    background-image: url('src/assets/Netflix-1000x563_waifu2x_photo_noise3_scale2.png');
+    background-size: cover; /* Mantén la imagen ajustada al contenedor */
+    background-position: center;
+    animation: zoomBackground 15s infinite; /* Animación de zoom */
+    z-index: 1; /* Asegura que el contenido esté por encima de la capa oscura */
+}
+
+/* Animación para hacer zoom en la imagen de fondo */
+@keyframes zoomBackground {
+    0% {
+        background-size: 100%; /* Comienza con el tamaño normal */
+    }
+    50% {
+        background-size: 120%; /* Aumenta el tamaño al 120% */
+    }
+    100% {
+        background-size: 100%; /* Regresa al tamaño original */
+    }
+}
+
+/* Capa oscura sobre la imagen de fondo */
+.home-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.566); /* Capa negra semitransparente */
+    z-index: 0; /* Asegura que esta capa oscura esté debajo del contenido pero sobre la imagen */
+}
+
+/* El contenido principal del sitio */
+.title {
+    font-size: 180px;
+    color: #ffba90; /* Color de Netflix */
+    z-index: 2; /* Asegura que el título esté sobre todo */
+}
+
+.subtitle {
+    font-size: 40px;
+    color: #ef7f4b;
+    z-index: 2; /* Asegura que el subtítulo esté sobre todo */
+}
+
+.description {
+    font-size: 25px;
+    color: #e0dddd;
+    z-index: 2; /* Asegura que la descripción esté sobre todo */
+}
+
+.buttons-container {
+    margin-top: 20px;
+    z-index: 2; /* Asegura que los botones estén sobre todo */
+}
+
+.btn {
+    background-color: #e0813d;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 15px;
+    font-weight: bolder;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    z-index: 2; /* Asegura que el botón esté sobre todo */
+}
+
+.btn:hover {
+    background-color: rgb(218, 90, 10);
+    color: #f0ceb6;
+}
