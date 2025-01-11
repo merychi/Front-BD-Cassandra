@@ -1,0 +1,204 @@
+body {
+  background-image: url('src/assets/Netflix-1000x563_waifu2x_photo_noise3_scale2.png');
+  color: white;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: -1;
+}
+
+.app {
+  margin: auto;
+}
+
+.featured-movie {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.featured-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  object-position: center;
+  animation: zoomInOut 10s infinite alternate;
+}
+
+.movie-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.recommended, .all-movies {
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.recommended h2, .all-movies h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.903);
+}
+
+.recommended-list, .movie-list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.movie-list {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-list-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  width: 80%;
+}
+
+.movie-card {
+  min-width: 150px;
+  text-align: center;
+  flex: 0 0 auto;
+  margin: 10px;
+  display: inline-block;
+  margin: 10px;
+}
+
+.movie-card img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.pagination-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-btn.left {
+  left: 0px;
+}
+
+.pagination-btn.right {
+  right: 0px;
+}
+
+.pagination-btn i {
+  font-size: 1.5em;
+}
+
+.movie-card h3 {
+  font-size: 16px;
+  margin: 10px 0 0;
+}
+
+.go-home-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 15px 30px;
+  font-size: 17px;
+  color: #ffffff;
+  background-color: #b86326;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.go-home-btn:hover {
+  background-color: rgb(218, 90, 10);
+}
+
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-bottom: 55px;
+}
+
+.memflisb {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.status-bar-btn {
+  position: absolute; 
+  top: 20px; 
+  right: 20px; 
+  padding: 15px;
+  font-size: 17px;
+  color: #ffffff;
+  background-color: #b86326;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.status-bar-btn:hover {
+  background-color: rgb(218, 90, 10); 
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

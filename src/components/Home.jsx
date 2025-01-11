@@ -14,7 +14,7 @@ export const Home = () => {
 
   return (
     <div className="home-container">
-      <h1 className="title">Netflix</h1>
+      <h1 className="title">Memflis</h1>
       <h3 className="subtitle">Mira las películas que quieras</h3>
       <h4 className="description">Y recomiéndalas a tus amigos</h4>
       <div className="buttons-container">
