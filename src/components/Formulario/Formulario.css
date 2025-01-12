@@ -9,19 +9,20 @@
 @keyframes slideIn {
   0% {
     opacity: 0;
-    transform: translateY(-50px); /* Mueve el formulario hacia arriba fuera de la vista */
+    transform: translateY(-50px);
   }
+
   100% {
     opacity: 1;
-    transform: translateY(0); /* Vuelve a su posición original */
+    transform: translateY(0);
   }
 }
 
 .container {
   display: flex;
-  justify-content: center; 
-  align-items: center;     
-  height: 100vh;           
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   margin: 0;
   position: relative;
 }
@@ -37,16 +38,17 @@
   background-position: center;
   z-index: -1;
 }
+
 .background::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.566);
-    z-index: 1;
-  }
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.566);
+  z-index: 1;
+}
 
 form {
   background-color: #ececec;
@@ -84,47 +86,59 @@ h2 {
 
 .input-wrapper .input-icon {
   position: absolute;
-  left: 10px; 
+  left: 12px;
   color: #e0813d;
-  font-size: 18px;
+  font-size: 20px;
   pointer-events: none;
 }
 
-input {
-    padding-top: 12px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    padding-left: 40px;
-    border: 0;
-    border-radius: 4px;
-    font-size: 14px;
-    font-style: italic;
-    width: 100%;
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  padding-top: 10px;
+  cursor: pointer;
+  color: #e0813d;
+  font-size: 22px;
+  pointer-events: all;
+}
+
+.container form input {
+  padding-top: 12px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 38px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 14px;
+  font-style: italic;
+  width: 100%;
+  color: #000000;
+  background-color:#ffffff;
 }
 
 input:focus {
-    border-color: #df7c36;  
-    outline: 2px solid #df7c36;  
-  }
+  border-color: #df7c36;
+  outline: 2px solid #df7c36;
+}
 
-  .go-home-btn {
-    position: absolute; 
-    top: 20px; 
-    right: 20px; 
-    padding: 15px;
-    font-size: 17px;
-    color: #ffffff;
-    background-color: #b86326;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; 
-  }
+.go-home-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 15px;
+  font-size: 17px;
+  color: #ffffff;
+  background-color: #b86326;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .go-home-btn:hover {
-    background-color: rgb(218, 90, 10); 
-  }
-  
+.go-home-btn:hover {
+  background-color: rgb(218, 90, 10);
+}
+
 button {
   padding: 10px;
   font-size: 17px;
@@ -170,7 +184,7 @@ p {
 }
 
 .error-message {
-  
+
   color: red;
   font-weight: bold;
   font-style: italic;

@@ -1,7 +1,7 @@
 
 import { Link, useNavigate } from "react-router-dom"; 
 import "./Formulario.css";
-import { BiLock, BiEnvelope } from "react-icons/bi";
+import { BiLock, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
 
 export const Login = () => {
@@ -10,6 +10,7 @@ export const Login = () => {
   const [clave, setClave] = useState("");
   const [error, setError] = useState(false);
   const [mensajeError, setMensajeError] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,13 +26,17 @@ export const Login = () => {
     alert("Inicio de sesión exitoso!");
   };
 
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible); 
+  };
+
   const goHome = () => {
     navigate("/"); 
   };
 
   return (
     <div className="container">
-      <button className="go-home-btn" onClick={goHome}>Inicio</button>
+      <button className="go-home-btn" onClick={goHome}> <BiSolidDoorOpen className="input-icon"/> </button>
       <div className="background"></div>
       <form onSubmit={handleSubmit}>
         <h2>Iniciar Sesión</h2>
@@ -56,13 +61,16 @@ export const Login = () => {
             <BiLock className="input-icon" />
             <input
               id="clave"
-              type="password"
+              type={passwordVisible ? "text" : "password"}
               value={clave}
               onChange={(e) => setClave(e.target.value)}
               placeholder="Contraseña"
               required
               title="Este campo es obligatorio"
             />
+            <span className="password-toggle" onClick={togglePasswordVisibility}>
+              {passwordVisible ? <BiShow /> : <BiHide />} 
+            </span>
           </div>
           {error && <p className="error-message">{mensajeError}</p>}
           <div className="account-question">

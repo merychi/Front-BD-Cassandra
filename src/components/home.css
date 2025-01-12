@@ -5,12 +5,12 @@
     align-items: center;
     height: 100vh;
     text-align: center;
-    position: relative; /* Contexto para los elementos con 'absolute' */
+    position: relative; 
     background-image: url('src/assets/Netflix-1000x563_waifu2x_photo_noise3_scale2.png');
-    background-size: cover; /* Mantén la imagen ajustada al contenedor */
+    background-size: cover; 
     background-position: center;
-    animation: zoomBackground 15s infinite; /* Animación de zoom */
-    z-index: 1; /* Asegura que el contenido esté por encima de la capa oscura */
+    animation: zoomBackground 15s infinite;
+    z-index: 1;
 }
 
 /* Animación para hacer zoom en la imagen de fondo */
@@ -26,7 +26,7 @@
     }
 }
 
-/* Capa oscura sobre la imagen de fondo */
+
 .home-container::before {
     content: '';
     position: absolute;
@@ -34,15 +34,15 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.566); /* Capa negra semitransparente */
-    z-index: 0; /* Asegura que esta capa oscura esté debajo del contenido pero sobre la imagen */
+    background-color: rgba(0, 0, 0, 0.566); 
+    z-index: 0; 
 }
 
-/* El contenido principal del sitio */
+
 .title {
     font-size: 180px;
-    color: #ffba90; /* Color de Netflix */
-    z-index: 2; /* Asegura que el título esté sobre todo */
+    color: #ffba90; 
+    z-index: 2;
 }
 
 .subtitle {
