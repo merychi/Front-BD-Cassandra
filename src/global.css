@@ -319,30 +319,30 @@ input {
 
 .slider-label {
   font-size: 16px;
-  margin: 0 20px; /* Espaciado a los lados */
+  margin: 0 20px; 
 }
 
 .slider {
   width: 300px;
   height: 10px;
-  background-color: #b86326; /* Color de fondo de la pista (track) */
-  border-radius: 5px; /* Bordes redondeados en la pista */
-  position: relative; /* Necesario para asegurar la correcta alineación */
+  background-color: #b86326; 
+  border-radius: 5px;
+  position: relative;
 }
 
 .slider-thumb {
-  background-color: orange; /* Color del thumb */
+  background-color: orange; 
   border-radius: 50%;
   width: 20px;
   height: 20px;
   position: absolute;
-  top: 50%; /* Alinea el thumb al centro vertical de la pista */
-  transform: translateY(-50%); /* Ajusta el thumb para que quede centrado */
+  top: 50%; 
+  transform: translateY(-50%); 
 }
 
 .slider-track {
-  background-color: orange; /* Color de la pista */
-  border-radius: 5px; /* Bordes redondeados en la pista */
+  background-color: orange; 
+  border-radius: 5px;
 }
 .slider-info {
   margin-top: 10px;

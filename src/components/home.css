@@ -48,18 +48,18 @@
 .subtitle {
     font-size: 40px;
     color: #ef7f4b;
-    z-index: 2; /* Asegura que el subtítulo esté sobre todo */
+    z-index: 2; 
 }
 
 .description {
     font-size: 25px;
     color: #e0dddd;
-    z-index: 2; /* Asegura que la descripción esté sobre todo */
+    z-index: 2; 
 }
 
 .buttons-container {
     margin-top: 20px;
-    z-index: 2; /* Asegura que los botones estén sobre todo */
+    z-index: 2; 
 }
 
 .btn {
@@ -73,7 +73,7 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
-    z-index: 2; /* Asegura que el botón esté sobre todo */
+    z-index: 2; 
 }
 
 .btn:hover {
