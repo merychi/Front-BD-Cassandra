@@ -155,7 +155,6 @@ button:hover {
   color: #f0ceb6;
 }
 
-/* Estilo para la sección de la cuenta */
 .account-question {
   display: flex;
   flex-direction: column;

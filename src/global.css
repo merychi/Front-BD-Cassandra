@@ -296,3 +296,60 @@ input {
   display: block;
   margin-bottom: 5px;
 }
+
+.slider-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.slider-title {
+  display: block;
+  align-self:flex-start;
+  margin-bottom: 20px;
+}
+
+.slider-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-label {
+  font-size: 16px;
+  margin: 0 20px; /* Espaciado a los lados */
+}
+
+.slider {
+  width: 300px;
+  height: 10px;
+  background-color: #b86326; /* Color de fondo de la pista (track) */
+  border-radius: 5px; /* Bordes redondeados en la pista */
+  position: relative; /* Necesario para asegurar la correcta alineación */
+}
+
+.slider-thumb {
+  background-color: orange; /* Color del thumb */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%; /* Alinea el thumb al centro vertical de la pista */
+  transform: translateY(-50%); /* Ajusta el thumb para que quede centrado */
+}
+
+.slider-track {
+  background-color: orange; /* Color de la pista */
+  border-radius: 5px; /* Bordes redondeados en la pista */
+}
+.slider-info {
+  margin-top: 10px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #464646;
+  text-align:left;
+  font-style: italic;
+}
+
