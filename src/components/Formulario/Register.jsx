@@ -1,8 +1,8 @@
-import { Link, useNavigate } from "react-router-dom"; // Importa useNavigate
+import { Link, useNavigate } from "react-router-dom"; 
 import "./Formulario.css";
 import { BiLock, BiUser, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
-
+import { createUser } from "../services/api";
 export const Register = () => {
   const navigate = useNavigate();
 
@@ -12,10 +12,10 @@ export const Register = () => {
   const [ConfirmarClave, setConfirmarClave] = useState("");
   const [error, setError] = useState(false);
   const [mensajeError, setMensajeError] = useState("");
-  const [passwordVisible, setPasswordVisible] = useState(false); // Para la contraseña
-  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false); // Para la confirmación de contraseña
+  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false); 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|net|org|gov|edu|co)$/;
@@ -32,9 +32,29 @@ export const Register = () => {
       return;
     }
 
+    if (!usuario || !clave || !email) {
+      setError(true);
+      setMensajeError("Todos los campos son obligatorios.");
+      return;
+    }
+
     setError(false);
     setMensajeError("");
-    alert("Registro exitoso");
+
+    const userData = {
+      usuario: usuario,
+      email: email,
+      clave: clave,
+    };
+
+    try {
+      const response = await createUser(userData);
+      alert("Usuario creado con éxito: " + response.message);
+      navigate("/login"); 
+    } catch (error) {
+      setError(true);
+      setMensajeError(error.error || "Error al crear el usuario");
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -56,7 +76,7 @@ export const Register = () => {
       </button>
       <div className="background"></div>
       <form onSubmit={handleSubmit}>
-        <h2>Bienvenido a Netflix</h2>
+        <h2>Bienvenido a Memflix</h2>
 
         <div className="input-container">
           <div className="input-wrapper">
