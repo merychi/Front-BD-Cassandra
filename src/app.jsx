@@ -5,6 +5,8 @@ import { Register } from "./components/Formulario/Register";
 import { Home } from "./components/Home";
 import {Logueado} from "./components/Main/logueado";
 import {AdminMovies} from "./components/Main/adminmovies";
+import AdminUsuarios from "./components/Main/usuarios";
+import AdminPelis from "./components/Main/peliculas";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/registro" element={<Register />} /> 
         <Route path= "/logueado" element={<Logueado/> } />
         <Route path= "/adminmovies" element={<AdminMovies/> } />
+        <Route path= "/adminpanel/users" element={<AdminUsuarios/> } />
+        <Route path= "/adminpanel/movies" element={<AdminPelis/> } />
       </Routes>
     </Router>
   );
