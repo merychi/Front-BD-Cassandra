@@ -124,7 +124,7 @@ const AdminPelis = () => {
                 </div>
             )}
 
-            <div className="container mx-auto px-4 mt-4">
+            <div className="containerfixx mx-auto px-4 mt-4">
                 <table className="table-auto w-full">
                     <thead>
                         <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">

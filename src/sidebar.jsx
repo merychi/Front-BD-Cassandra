@@ -8,7 +8,7 @@ const Sidebar = () => {
     const [activeSection, setActiveSection] = useState(null);
 
     useEffect(() => {
-        console.log('Sidebar Loaded'); // Esto se ejecutará al montar el componente
+        console.log('Sidebar Loaded');
     }, []);
 
     const toggleSection = (section) => {
@@ -17,13 +17,13 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar">
-            <h2>Dashboard</h2>
+            <h2 className='h2fixx'>Dashboard</h2>
             <div className="sidebar-divider"></div>
             <nav>
                 <ul>
                     <li>
                         <button onClick={() => toggleSection('main')}>
-                            <FontAwesomeIcon icon={faHome} /> Main{' '}
+                            <FontAwesomeIcon icon={faHome} /> Gestor{' '}
                             <span className="arrow">{activeSection === 'main' ? '︿' : '﹀'}</span>
                         </button>
                         <ul className={`submenu ${activeSection === 'main' ? 'open' : ''}`}>

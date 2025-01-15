@@ -311,8 +311,8 @@ input {
 
 
 .table-auto thead tr {
-  background-color: #f3f4f6;
-  color: #4b5563;
+  background-color: #393939;
+  color: #e3e3e3;
   text-transform: uppercase;
   font-size: 0.875rem;
   font-weight: bold;
@@ -321,30 +321,29 @@ input {
 .table-auto th {
   padding: 0.75rem 1rem;
   text-align: left;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid #464646;
 }
 
 
 .table-auto tbody tr:nth-child(even) {
-  background-color: #f9fafb;
+  background-color: #737373;
 }
 
 .table-auto tbody tr:hover {
-  background-color: #e5e7eb;
+  background-color: #353535;
 }
 
 
 .table-auto td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
-  color: #374151;
+  border-bottom: 1px solid #505050;
+  color: #ffffff;
   text-align: left;
 }
 
-
 a.bg-blue-500 {
   background-color: #b86326;
-  color: white;
+  color: rgb(130, 130, 130);
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   font-size: 0.875rem;
@@ -355,20 +354,20 @@ a.bg-blue-500 {
 }
 
 .btn-editar {
-  display: block;
-  margin: 20px auto 0;
-  padding: 15px 30px;
-  font-size: 17px;
-  color: #ffffff;
-  background-color: #b86326;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    /* display: block; */
+    margin: 20px auto 0;
+    /* padding: 15px 30px; */
+    font-size: 17px;
+    color: #ffffff;
+    background-color: #b86326;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 a.bg-blue-500:hover {
-  background-color: #2563eb;
+  background-color: #884617;
 }
 
 .btn-eliminar {
@@ -398,6 +397,7 @@ i {
   padding: 5px;
   border-radius: .9rem;
   border-color: #c9c9c9;
+  width: 200px;
 }
 
 .grid-container {
@@ -441,7 +441,7 @@ i {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(76, 76, 76, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -523,13 +523,14 @@ i {
 
 .custom-button {
   display: block;
-  margin: 20px auto 0;
-  padding: 15px 30px;
+  /* margin: 20px auto 0; */
+  /* padding: 15px 30px; */
   font-size: 17px;
   color: #ffffff;
   background-color: #b86326;
   border: none;
   border-radius: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -547,4 +548,17 @@ i {
 .custom-flex-card {
   display: flex;
   justify-content: center;
+}
+
+.containerfixx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-top: 30px;
+  position: relative;
+}
+
+.h2fixx{
+  font-size: 16px;
 }
