@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Formulario.css";
 import { BiLock, BiUser, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
+import axios from "axios"; // Asegúrate de importar Axios
+
 export const Register = () => {
   const navigate = useNavigate();
 
@@ -40,11 +42,29 @@ export const Register = () => {
     setError(false);
     setMensajeError("");
 
+    // Datos para el registro
     const userData = {
-      usuario: usuario,
+      username: usuario,  // Cambié 'usuario' a 'username' para que coincida con el backend
       email: email,
-      clave: clave,
+      password: clave,  // Cambié 'clave' a 'password' para que coincida con el backend
     };
+
+    try {
+      // Realizamos la solicitud POST al backend
+      const response = await axios.post("http://localhost:8080/auth/register", userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      // Si la respuesta es exitosa, redirigimos a otra página
+      if (response.status === 200) {
+        navigate("/logueado");  // O puedes redirigir a un panel o página después del registro exitoso
+      }
+    } catch (error) {
+      setError(true);
+      setMensajeError("Error al registrar al usuario. Intenta de nuevo.");
+    }
   };
 
   const togglePasswordVisibility = () => {

@@ -4,22 +4,22 @@ import { Checkbox, FormGroup, FormControlLabel } from "@mui/material";
 import "../../global.css";
 
 export const RecomendacionesRecibidas = ({ }) => {
-  const userID = 1;
+  const userID = 2;
   const [peliculasRecomendadas, setPeliculasRecomendadas] = useState([]);
   const [peliculasVistas, setPeliculasVistas] = useState([]);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
       try {
-        const response = await axios.get(`/enviar?user_id=${userID}`);
-        setPeliculasRecomendadas(response.data.recommendations); 
+        const response = await axios.get(`http://localhost:8080/recommendations/${userID}`);
+        setPeliculasRecomendadas(response.data.data); 
       } catch (error) {
         console.error("Error fetching recommendations:", error);
       }
     };
 
     fetchRecommendations();
-  }, [userID]); // Se vuelve a ejecutar cada vez que cambia el userID
+  }, [userID]);
 
   const handleCheckboxChange = (e, id) => {
     if (e.target.checked) {

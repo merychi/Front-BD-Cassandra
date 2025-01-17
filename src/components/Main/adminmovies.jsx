@@ -17,21 +17,32 @@ export const AdminMovies = () => {
       return;
     }
   
+    const userId = user === 'all' ? 0 : parseInt(user);
+  
+    if (isNaN(userId)) {
+      setMessage("El ID de usuario no es válido.");
+      return;
+    }
+  
+    const recommendationData = {
+      user_id: userId,
+      recommendations: [parseInt(selectedMovie)],
+      lambda: sliderValue,
+    };
+  
     try {
-      // Hacer la solicitud POST con Axios
-      const response = await axios.post('http://localhost:8080/recommendations/add', null, {
-        params: {
-          user_id: user === 'all' ? '0' : user,  // Si el usuario es "all", se puede enviar un valor que el backend acepte.
-          lambda: sliderValue,
-        },
+      const response = await axios.post('http://localhost:8080/recommendations/add', recommendationData, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
       });
-      setMessage(response.data.message);  // Muestra el mensaje de éxito del backend
+  
+      setMessage("Recomendación enviada con éxito");
     } catch (error) {
       setMessage("Hubo un error al enviar la recomendación.");
       console.error("Error al hacer la solicitud:", error);
     }
-
-    // Limpiar los estados después de enviar la recomendación
+  
     setSelectedMovie("");
     setUser("");
   };

@@ -35,9 +35,8 @@ export const Login = () => {
         }
       });
 
-      // Si la respuesta es exitosa, redirigimos al usuario a la página de inicio o dashboard
       if (response.status === 200) {
-        navigate("/dashboard"); // O la ruta que corresponda
+        navigate("/logueado"); 
       }
     } catch (error) {
       setError(true);
