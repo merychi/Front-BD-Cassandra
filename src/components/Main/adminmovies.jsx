@@ -2,18 +2,16 @@ import axios from "axios";
 import React, { useState } from "react";
 import ReactSlider from 'react-slider';
 
-
 export const AdminMovies = () => {
-  const numbers = Array.from({ length: 10 }, (_, i) => i + 1);
-  const [selectedMovie, setSelectedMovie] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState(""); // Podrías eliminar esta línea también si no la usas
   const [user, setUser] = useState("");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(true);
   const [sliderValue, setSliderValue] = useState(0);
 
   const handleAssign = async () => {
-    if (!selectedMovie || !user) {
-      setMessage("Selecciona una película y un usuario.");
+    if (!user) {
+      setMessage("Selecciona un usuario.");
       return;
     }
   
@@ -27,11 +25,6 @@ export const AdminMovies = () => {
     const recommendationData = {
       recommendations: [parseInt(selectedMovie)],
     };
-    
-    if (isNaN(userId)) {
-      setMessage("El ID de usuario no es válido.");
-      return;
-    }
     
     const lambda = sliderValue;
     
@@ -65,7 +58,6 @@ export const AdminMovies = () => {
 
   return (
     <div className="admin-container">
-
       <h2 className="letricablanca">Administrar Películas Recomendadas</h2>
 
       <div className="slider-container">
@@ -94,6 +86,8 @@ export const AdminMovies = () => {
             : `El ajuste está Intermedio, recomendaciones más equilibradas entre específicas y diversas.`}
       </div>
 
+      {/* Eliminar esta sección para quitar el selector de películas */}
+      {/* 
       <div className="movie-selector">
         <label htmlFor="movie">Selecciona una película:</label>
         <select
@@ -109,6 +103,7 @@ export const AdminMovies = () => {
           ))}
         </select>
       </div>
+      */}
 
       <div className="user-selector">
         <label htmlFor="user">Usuario (escribe 'all' para todos):</label>

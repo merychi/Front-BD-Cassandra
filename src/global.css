@@ -325,6 +325,10 @@ input {
 }
 
 .letricablanca {
+  color: rgba(255, 255, 255, 0.839);
+}
+
+.letricablanca-home {
   padding: 50px;
   color: rgba(255, 255, 255, 0.839);
 }
@@ -733,3 +737,31 @@ i {
 .pagination-info{
   padding: 15px;
 }
+
+.admin-container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.perfil-h4 {
+  font-size: 1.5rem;
+  color: #e9e9e9;
+  font-weight:100;
+}
+
+.perfil-p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.perfil-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ff5733;
+}
+
+

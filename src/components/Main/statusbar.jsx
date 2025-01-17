@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { AdminMovies } from "./adminmovies";
-import { BiBell } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
 import "../../global.css";
 import { useNavigate } from "react-router-dom"; 
-import { RecomendacionesRecibidas } from "./recomendaciones";
+import { Perfil } from "./Perfil";
 
 const StatusBar = ({ onButtonClick }) => {
   const navigate = useNavigate();
   const [showAdminPanel, setShowAdminPanel] = useState(false);
-  const [showRecomendaciones, setShowRecomendaciones] = useState(false);
+  const [showPerfil, setShowPerfil] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (e) => {
@@ -38,8 +38,8 @@ const StatusBar = ({ onButtonClick }) => {
         <div className="status-bar-buttons">
           <button 
           className="status-bar-btn" 
-          onClick={() => setShowRecomendaciones(!showRecomendaciones)}>
-          <BiBell className="input-icon"/>
+          onClick={() => setShowPerfil(!showPerfil)}>
+          <BiUser className="input-icon"/>
           </button>
 
           <button className="status-bar-btn" onClick={adminPanel}>
@@ -53,7 +53,7 @@ const StatusBar = ({ onButtonClick }) => {
           </button>
         </div>
       </div>
-      {showRecomendaciones && <RecomendacionesRecibidas searchTerm={searchTerm} />}
+      {showPerfil && <Perfil searchTerm={searchTerm} />}
       {showAdminPanel && <AdminMovies searchTerm={searchTerm} />}
     </div>
   );

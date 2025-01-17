@@ -64,7 +64,7 @@ export const Logueado = () => {
       </div>
 
       <div className="recommended">
-        <h2 className="letricablanca">Películas recomendadas</h2>
+        <h2 className="letricablanca-home">Películas recomendadas</h2>
         <div className="movie-list">
           {recommendedMovies.length > 0 ? (
             recommendedMovies.map((movie) => (
@@ -83,7 +83,7 @@ export const Logueado = () => {
       </div>
 
       <div className="all-movies">
-        <h2 className="letricablanca">Listado de películas</h2>
+        <h2 className="letricablanca-home">Listado de películas</h2>
         <div className="movie-list">
           {movies.map((movie) => (
             <div key={movie.id} className="movie-card">
