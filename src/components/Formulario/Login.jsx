@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./Formulario.css";
 import { BiLock, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
-import axios from "axios"; 
+import axios from "axios"; // Importamos Axios
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -33,14 +33,26 @@ export const Login = () => {
           "Content-Type": "application/json"
         }
       });
-
+    
+      console.log("Respuesta del backend:", response.data.data); // Agrega esto para ver toda la respuesta
+    
       if (response.status === 200) {
-        navigate("/logueado"); 
+        const { user_id, name } = response.data.data[0]; 
+        localStorage.setItem("userID", String(user_id));  
+        localStorage.setItem("userName", name); 
+        console.log("userID almacenado:", localStorage.getItem("userID"));
+        console.log("userName almacenado:", localStorage.getItem("userName"));
+
+        navigate("/logueado");
       }
+      
     } catch (error) {
+      console.error("Error en la respuesta:", error.response || error);
       setError(true);
       setMensajeError("Credenciales incorrectas o error en el servidor.");
     }
+    
+    
   };
 
   const togglePasswordVisibility = () => {
