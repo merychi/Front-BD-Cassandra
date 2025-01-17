@@ -25,18 +25,24 @@ export const AdminMovies = () => {
     }
   
     const recommendationData = {
-      user_id: userId,
       recommendations: [parseInt(selectedMovie)],
-      lambda: sliderValue,
     };
-  
+    
+    if (isNaN(userId)) {
+      setMessage("El ID de usuario no es válido.");
+      return;
+    }
+    
+    const lambda = sliderValue;
+    
     try {
-      const response = await axios.post('http://localhost:8080/recommendations/add', recommendationData, {
+      console.log(userId);
+      const response = await axios.post(`http://localhost:8080/recommendations/add?user_id=${userId}&lambda=${lambda}`, recommendationData, {
         headers: {
           'Content-Type': 'application/json',
         }
       });
-  
+    
       setMessage("Recomendación enviada con éxito");
     } catch (error) {
       setMessage("Hubo un error al enviar la recomendación.");

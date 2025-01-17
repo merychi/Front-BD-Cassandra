@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./Formulario.css";
 import { BiLock, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
-import axios from "axios"; // Importamos Axios
+import axios from "axios"; 
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -28,7 +28,6 @@ export const Login = () => {
     };
 
     try {
-      // Realizamos la petición POST al backend para autenticar al usuario
       const response = await axios.post("http://localhost:8080/auth/login", loginData, {
         headers: {
           "Content-Type": "application/json"
