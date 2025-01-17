@@ -73,6 +73,14 @@ body::before {
   flex-wrap: wrap;
 }
 
+
+.featured-img,
+.movie-card img {
+  width: 100%; 
+  height: auto; 
+  object-fit: cover; 
+}
+
 .movie-list {
   display: flex;
   transition: transform 0.3s ease-in-out;
@@ -90,19 +98,59 @@ body::before {
 }
 
 .movie-card {
-  min-width: 150px;
+  flex: 1 1 calc(10% - 10px); /* Cada película ocupa un 33% menos el espacio del gap */
+  margin: 5px;  /* Reduce el margen entre las imágenes */
   text-align: center;
-  flex: 0 0 auto;
-  margin: 10px;
-  display: inline-block;
-  margin: 10px;
 }
 
 .movie-card img {
-  width: 150px;
-  height: 200px;
+  width: 100%; /* Ajusta las imágenes al 100% del tamaño del contenedor */
+  height: auto;
   object-fit: cover;
 }
+
+.movie-info h1 {
+  font-size: 2rem;
+}
+
+.recommended-list,
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Estilo para las películas recomendadas */
+.recommended-list .movie-card {
+  flex: 1 1 calc(33.333% - 10px); /* Igual que las películas normales, pero con una mayor flexibilidad */
+}
+
+.recommended-list .movie-card img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Hacer que las películas recomendadas se ajusten bien en móviles y pantallas más pequeñas */
+@media (max-width: 768px) {
+  .movie-card {
+    flex: 1 1 calc(50% - 10px); /* En pantallas pequeñas, cada imagen ocupa el 50% */
+  }
+
+  .recommended-list .movie-card {
+    flex: 1 1 calc(50% - 10px); /* Las recomendaciones también ocupan 50% en pantallas más pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-card {
+    flex: 1 1 100%; /* En pantallas muy pequeñas, cada imagen ocupa el 100% */
+  }
+
+  .recommended-list .movie-card {
+    flex: 1 1 100%; /* Las recomendaciones también ocupan el 100% en pantallas muy pequeñas */
+  }
+}
+
 
 .pagination-btn {
   position: absolute;
@@ -277,6 +325,7 @@ input {
 }
 
 .letricablanca {
+  padding: 50px;
   color: rgba(255, 255, 255, 0.839);
 }
 
