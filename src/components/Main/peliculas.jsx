@@ -1,33 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import "../../global.css";
 
 const AdminPelis = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [data, setData] = useState([
-        {
-            movie_id: 1,
-            poster_link: 'link_to_poster1.jpg',
-            title: 'Movie 1',
-            release_year: 2023,
-            runtime: '120 mins',
-            genre: 'Action',
-            director: 'Director 1',
-            overview: 'Overview of Movie 1'
-        },
-        {
-            movie_id: 2,
-            poster_link: 'link_to_poster2.jpg',
-            title: 'Movie 2',
-            release_year: 2022,
-            runtime: '90 mins',
-            genre: 'Comedy',
-            director: 'Director 2',
-            overview: 'Overview of Movie 2'
-        },
-        // Add more movies as needed
-    ]);
-
-    const [editData, setEditData] = useState(null);
+    const [data, setData] = useState([]);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [newMovie, setNewMovie] = useState({
         poster_link: '',
@@ -39,39 +16,41 @@ const AdminPelis = () => {
         overview: '',
     });
 
-    const filteredData = data.filter(item =>
+    const filteredData = (data || []).filter(item =>
         item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const handleEdit = movie => {
-        setEditData(movie);
-    };
+    useEffect(() => {
+        const fetchMovies = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/movies/');
+                console.log("Respuesta completa:", response);
+                
+                if (response.data && response.data.data) {
+                    setData(response.data.data);
+                } else {
+                    console.error("No se encontraron películas en la respuesta.");
+                    setData([]);
+                }
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+                setData([]);
+            }
+        };
+        
+        fetchMovies();
+    }, []);
 
-    const handleDelete = movie_id => {
-        setData(data.filter(item => item.movie_id !== movie_id));
-    };
+
 
     const handleAddMovie = () => {
         if (newMovie.poster_link && newMovie.title) {
-            const newId = data.length ? Math.max(data.map(item => item.movie_id)) + 1 : 1;
-            setData([...data, { ...newMovie, movie_id: newId }]);
-            setNewMovie({
-                poster_link: '',
-                title: '',
-                release_year: '',
-                runtime: '',
-                genre: '',
-                director: '',
-                overview: '',
-            });
+            // Aquí debes agregar la lógica para agregar la película en el backend, si lo deseas
+            alert('Película agregada');
             setIsAddModalOpen(false);
         } else {
             alert('Por favor, complete todos los campos obligatorios.');
         }
-    };
-
-    const closeModal = () => {
-        setEditData(null);
     };
 
     return (
@@ -95,6 +74,7 @@ const AdminPelis = () => {
                 </div>
             </div>
 
+            {/* Modal de Agregar Película */}
             {isAddModalOpen && (
                 <div className="modal-overlay-custom">
                     <div className="custom-card-edit">
@@ -136,13 +116,12 @@ const AdminPelis = () => {
                             <th className="py-3 px-6 text-left">Género</th>
                             <th className="py-3 px-6 text-left">Director</th>
                             <th className="py-3 px-6 text-left">Descripción</th>
-                            <th className="py-3 px-6 text-center">Acción</th>
                         </tr>
                     </thead>
                     <tbody className="text-gray-800">
-                        {filteredData.map(item => (
-                            <tr key={item.movie_id}>
-                                <td className="py-3 px-6 border-b border-gray-200">{item.movie_id}</td>
+                        {(filteredData.length > 0 ? filteredData : []).map(item => (
+                            <tr key={item.id}>
+                                <td className="py-3 px-6 border-b border-gray-200">{item.id}</td>
                                 <td className="py-3 px-6 border-b border-gray-200">{item.poster_link}</td>
                                 <td className="py-3 px-6 border-b border-gray-200">{item.title}</td>
                                 <td className="py-3 px-6 border-b border-gray-200">{item.release_year}</td>
@@ -150,23 +129,10 @@ const AdminPelis = () => {
                                 <td className="py-3 px-6 border-b border-gray-200">{item.genre}</td>
                                 <td className="py-3 px-6 border-b border-gray-200">{item.director}</td>
                                 <td className="py-3 px-6 border-b border-gray-200">{item.overview}</td>
-                                <td className="py-3 px-6 text-center border-b border-gray-200">
-                                    <button
-                                        onClick={() => handleEdit(item)}
-                                        className="btn-editar"
-                                    >
-                                        <i className="fas fa-edit mr-1"></i> Editar
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(item.movie_id)}
-                                        className="btn-eliminar"
-                                    >
-                                        <i className="fas fa-trash-alt mr-1"></i> Eliminar
-                                    </button>
-                                </td>
                             </tr>
                         ))}
                     </tbody>
+
                 </table>
             </div>
         </div>

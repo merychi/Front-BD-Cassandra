@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import { AdminMovies } from "./adminmovies";
+import { BiBell } from "react-icons/bi";
 import "../../global.css";
+import { useNavigate } from "react-router-dom"; 
+import { RecomendacionesRecibidas } from "./recomendaciones";
 
 const StatusBar = ({ onButtonClick }) => {
+  const navigate = useNavigate();
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [showRecomendaciones, setShowRecomendaciones] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+
+  const adminPanel = () => {
+    navigate("/adminpanel");
+  };
+
 
   return (
     <div>
@@ -26,17 +36,24 @@ const StatusBar = ({ onButtonClick }) => {
         </div>
 
         <div className="status-bar-buttons">
-          <button className="status-bar-btn" onClick={onButtonClick}>
-            Ver todas
+          <button 
+          className="status-bar-btn" 
+          onClick={() => setShowRecomendaciones(!showRecomendaciones)}>
+          <BiBell className="input-icon"/>
+          </button>
+
+          <button className="status-bar-btn" onClick={adminPanel}>
+            Administrador
           </button>
           <button
             className="status-bar-btn"
             onClick={() => setShowAdminPanel(!showAdminPanel)}
           >
-            Admin
+            Recomendar
           </button>
         </div>
       </div>
+      {showRecomendaciones && <RecomendacionesRecibidas searchTerm={searchTerm} />}
       {showAdminPanel && <AdminMovies searchTerm={searchTerm} />}
     </div>
   );

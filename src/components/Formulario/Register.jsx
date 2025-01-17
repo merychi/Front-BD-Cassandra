@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Formulario.css";
 import { BiLock, BiUser, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
-import { createUser } from "../services/api";
 export const Register = () => {
   const navigate = useNavigate();
 
@@ -46,15 +45,6 @@ export const Register = () => {
       email: email,
       clave: clave,
     };
-
-    try {
-      const response = await createUser(userData);
-      alert("Usuario creado con éxito: " + response.message);
-      navigate("/login"); 
-    } catch (error) {
-      setError(true);
-      setMensajeError(error.error || "Error al crear el usuario");
-    }
   };
 
   const togglePasswordVisibility = () => {

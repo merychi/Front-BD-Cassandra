@@ -1,25 +1,37 @@
+import axios from "axios";
 import React, { useState } from "react";
 import ReactSlider from 'react-slider';
 
+
 export const AdminMovies = () => {
-  const [movies, setMovies] = useState([
-    "Interestellar",
-    "Her",
-    "Joker",
-    "Maze Runner",
-  ]);
+  const numbers = Array.from({ length: 10 }, (_, i) => i + 1);
   const [selectedMovie, setSelectedMovie] = useState("");
   const [user, setUser] = useState("");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(true);
   const [sliderValue, setSliderValue] = useState(0);
 
-  const handleAssign = () => {
+  const handleAssign = async () => {
     if (!selectedMovie || !user) {
       setMessage("Selecciona una película y un usuario.");
       return;
     }
-    setMessage(`Se recomendó "${selectedMovie}" para ${user || "todos los usuarios"}.`);
+  
+    try {
+      // Hacer la solicitud POST con Axios
+      const response = await axios.post('http://localhost:8080/recommendations/add', null, {
+        params: {
+          user_id: user === 'all' ? '0' : user,  // Si el usuario es "all", se puede enviar un valor que el backend acepte.
+          lambda: sliderValue,
+        },
+      });
+      setMessage(response.data.message);  // Muestra el mensaje de éxito del backend
+    } catch (error) {
+      setMessage("Hubo un error al enviar la recomendación.");
+      console.error("Error al hacer la solicitud:", error);
+    }
+
+    // Limpiar los estados después de enviar la recomendación
     setSelectedMovie("");
     setUser("");
   };
@@ -73,9 +85,9 @@ export const AdminMovies = () => {
           onChange={(e) => setSelectedMovie(e.target.value)}
         >
           <option value="">-- Seleccionar --</option>
-          {movies.map((movie, index) => (
-            <option key={index} value={movie}>
-              {movie}
+          {numbers.map((number) => (
+            <option key={number} value={number}>
+              {number}
             </option>
           ))}
         </select>
@@ -85,7 +97,7 @@ export const AdminMovies = () => {
         <label htmlFor="user">Usuario (escribe 'all' para todos):</label>
         <input
           id="user"
-          type="text"
+          type="number"
           value={user}
           onChange={(e) => setUser(e.target.value)}
           placeholder="Usuario específico o todos"

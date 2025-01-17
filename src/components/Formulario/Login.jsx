@@ -1,42 +1,63 @@
-
-import { Link, useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./Formulario.css";
 import { BiLock, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
+import axios from "axios"; // Importamos Axios
 
 export const Login = () => {
-  const navigate = useNavigate(); 
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const [user, setuser] = useState("");
   const [clave, setClave] = useState("");
   const [error, setError] = useState(false);
   const [mensajeError, setMensajeError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (clave !== "12345") {
+    if (!user || !clave) {
       setError(true);
-      setMensajeError("La clave es incorrecta.");
+      setMensajeError("Por favor ingresa tu correo y contraseña.");
       return;
     }
 
-    setError(false);
-    setMensajeError("");
-    alert("Inicio de sesión exitoso!");
+    // Datos para el login
+    const loginData = {
+      username: user,
+      password: clave
+    };
+
+    try {
+      // Realizamos la petición POST al backend para autenticar al usuario
+      const response = await axios.post("http://localhost:8080/auth/login", loginData, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      // Si la respuesta es exitosa, redirigimos al usuario a la página de inicio o dashboard
+      if (response.status === 200) {
+        navigate("/dashboard"); // O la ruta que corresponda
+      }
+    } catch (error) {
+      setError(true);
+      setMensajeError("Credenciales incorrectas o error en el servidor.");
+    }
   };
 
   const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible); 
+    setPasswordVisible(!passwordVisible);
   };
 
   const goHome = () => {
-    navigate("/"); 
+    navigate("/");
   };
 
   return (
     <div className="container">
-      <button className="go-home-btn" onClick={goHome}> <BiSolidDoorOpen className="input-icon"/> </button>
+      <button className="go-home-btn" onClick={goHome}>
+        <BiSolidDoorOpen className="input-icon" />
+      </button>
       <div className="background"></div>
       <form onSubmit={handleSubmit}>
         <h2>Iniciar Sesión</h2>
@@ -45,13 +66,12 @@ export const Login = () => {
           <div className="input-wrapper">
             <BiEnvelope className="input-icon" />
             <input
-              id="email"
+              id="user"
               type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={user}
+              onChange={(e) => setuser(e.target.value)}
               placeholder="Correo electrónico"
               required
-              title="Este campo es obligatorio"
             />
           </div>
         </div>
@@ -66,15 +86,16 @@ export const Login = () => {
               onChange={(e) => setClave(e.target.value)}
               placeholder="Contraseña"
               required
-              title="Este campo es obligatorio"
             />
             <span className="password-toggle" onClick={togglePasswordVisibility}>
-              {passwordVisible ? <BiShow /> : <BiHide />} 
+              {passwordVisible ? <BiShow /> : <BiHide />}
             </span>
           </div>
           {error && <p className="error-message">{mensajeError}</p>}
           <div className="account-question">
-            <p><Link to="/modificar">¿Olvidaste tu contraseña?</Link></p>
+            <p>
+              <a href="/modificar">¿Olvidaste tu contraseña?</a>
+            </p>
           </div>
         </div>
 
@@ -82,7 +103,9 @@ export const Login = () => {
 
         <div className="account-question">
           <p>¿No tienes una cuenta?</p>
-          <p><Link to="/registro">Ingresa aquí</Link></p>
+          <p>
+            <a href="/registro">Ingresa aquí</a>
+          </p>
         </div>
       </form>
     </div>
