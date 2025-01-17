@@ -46,13 +46,21 @@ const AdminUsuarios = () => {
     );
 
     const handleDelete = async (id) => {
+        {/*const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar este usuario?");
+        if (!confirmDelete) return;
+    
         try {
-            await axios.delete(`http://localhost:8080/users/${id}`);
-            setUsers(users.filter(item => item.user_id !== id));  
+            const response = await axios.delete(`http://localhost:8080/users/${id}`);
+            if (response.status === 200) {
+                setUsers(users.filter(item => item.user_id !== id));  
+                alert("Usuario eliminado con éxito.");
+            }
         } catch (error) {
             console.error('Error al eliminar el usuario:', error);
-        }
+            alert("Hubo un error al eliminar el usuario.");
+        }*/}
     };
+    
 
     return (
         <div>

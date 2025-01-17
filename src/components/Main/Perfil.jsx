@@ -9,7 +9,7 @@ export const Perfil = () => {
     <div className="admin-container2">
       <h2 className="letricablanca">Perfil</h2>
       <div>
-        <h4 className="perfil-h4 ">Bienvenido a Memflix {userName}</h4>
+        <h4 className="perfil-h4 ">Bienvenido a Memflis {userName}</h4>
         <p className="perfil-p">
           Para poder recibir recomendaciones de películas de otros usuarios,
           comparte tu ID.

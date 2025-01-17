@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./Formulario.css";
-import { BiLock, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
+import { BiLock, BiUser, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
 import axios from "axios"; // Importamos Axios
 
@@ -74,13 +74,13 @@ export const Login = () => {
 
         <div className="input-container">
           <div className="input-wrapper">
-            <BiEnvelope className="input-icon" />
+            <BiUser className="input-icon" />
             <input
               id="user"
               type="text"
               value={user}
               onChange={(e) => setuser(e.target.value)}
-              placeholder="Correo electrónico"
+              placeholder="Usuario"
               required
             />
           </div>
@@ -102,11 +102,6 @@ export const Login = () => {
             </span>
           </div>
           {error && <p className="error-message">{mensajeError}</p>}
-          <div className="account-question">
-            <p>
-              <a href="/modificar">¿Olvidaste tu contraseña?</a>
-            </p>
-          </div>
         </div>
 
         <button type="submit">Ingresar</button>

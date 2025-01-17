@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AdminMovies } from "./adminmovies";
 import { BiUser } from "react-icons/bi";
 import "../../global.css";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { Perfil } from "./Perfil";
 
 const StatusBar = ({ onButtonClick }) => {
@@ -36,20 +36,17 @@ const StatusBar = ({ onButtonClick }) => {
         </div>
 
         <div className="status-bar-buttons">
-          <button 
-          className="status-bar-btn" 
-          onClick={() => setShowPerfil(!showPerfil)}>
-          <BiUser className="input-icon"/>
-          </button>
-
-          <button className="status-bar-btn" onClick={adminPanel}>
-            Administrador
-          </button>
           <button
             className="status-bar-btn"
             onClick={() => setShowAdminPanel(!showAdminPanel)}
           >
             Recomendar
+          </button>
+
+          <button
+            className="status-bar-btn"
+            onClick={() => setShowPerfil(!showPerfil)}>
+            <BiUser className="input-icon" />
           </button>
         </div>
       </div>

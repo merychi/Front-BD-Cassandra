@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Formulario.css";
 import { BiLock, BiUser, BiEnvelope, BiSolidDoorOpen, BiShow, BiHide } from "react-icons/bi";
 import { useState } from "react";
-import axios from "axios"; // Asegúrate de importar Axios
+import axios from "axios"; 
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -42,11 +42,10 @@ export const Register = () => {
     setError(false);
     setMensajeError("");
 
-    // Datos para el registro
     const userData = {
-      username: usuario,  // Cambié 'usuario' a 'username' para que coincida con el backend
+      username: usuario,  
       email: email,
-      password: clave,  // Cambié 'clave' a 'password' para que coincida con el backend
+      password: clave, 
     };
 
     try {
@@ -57,9 +56,9 @@ export const Register = () => {
         },
       });
 
-      // Si la respuesta es exitosa, redirigimos a otra página
+
       if (response.status === 200) {
-        navigate("/logueado");  // O puedes redirigir a un panel o página después del registro exitoso
+        navigate("/login"); 
       }
     } catch (error) {
       setError(true);
