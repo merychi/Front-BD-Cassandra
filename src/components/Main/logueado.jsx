@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PeliRecommended from "./pelrecommended";
 import StatusBar from "./statusbar";
 import axios from "axios";
 import "../../global.css";
@@ -7,6 +8,7 @@ import "../../global.css";
 export const Logueado = () => {
   const [movies, setMovies] = useState([]);
   const [recommendedMovies, setRecommendedMovies] = useState([]);
+  const [showRecommended, setShowRecommended] = useState(true);
   const [randomMovie, setRandomMovie] = useState(null);
   const userID = localStorage.getItem("userID");
 
@@ -47,7 +49,7 @@ export const Logueado = () => {
   return (
     <div className="app">
       <StatusBar onButtonClick={goHome} />
-
+      
       <div className="featured-movie">
         {randomMovie && (
           <>

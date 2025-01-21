@@ -46,7 +46,7 @@ const AdminUsuarios = () => {
     );
 
     const handleDelete = async (id) => {
-        {/*const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar este usuario?");
+        const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar este usuario?");
         if (!confirmDelete) return;
     
         try {
@@ -58,7 +58,7 @@ const AdminUsuarios = () => {
         } catch (error) {
             console.error('Error al eliminar el usuario:', error);
             alert("Hubo un error al eliminar el usuario.");
-        }*/}
+        }
     };
     
 

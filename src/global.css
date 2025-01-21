@@ -765,3 +765,53 @@ i {
 }
 
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: rgb(76, 76, 76);
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.recommended-titles {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.recommended-titles li {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #dcdcdc;
+}
+
+.close-button {
+  padding: 15px 30px;
+  font-size: 17px;
+  color: #ffffff;
+  background-color: #b86326;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.close-button:hover {
+  background-color: #8f4c1c;
+}

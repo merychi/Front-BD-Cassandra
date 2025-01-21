@@ -6,7 +6,7 @@ const AdminPelis = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [movies, setMovies] = useState([]);
     const [moviesPerPage] = useState(10);  // 10 películas por página
-    const [totalMovies, setTotalMovies] = useState(0);  
+    const [totalMovies, setTotalMovies] = useState(0);
     const [searchTerm, setSearchTerm] = useState('');
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [newMovie, setNewMovie] = useState({
@@ -39,7 +39,7 @@ const AdminPelis = () => {
                 console.log("Películas recibidas:", response.data.data);
                 if (Array.isArray(response.data.data)) {
                     setMovies(response.data.data);
-                    setTotalMovies(response.data.data.length);  
+                    setTotalMovies(response.data.data.length);
                 } else {
                     console.error("Los datos recibidos no están en el formato esperado.");
                     setMovies([]);
@@ -88,8 +88,7 @@ const AdminPelis = () => {
                     alert('Película agregada con éxito');
                     setIsAddModalOpen(false);
 
-                    setMovies(prevMovies => [newMovie, ...prevMovies]);
-                    setTotalMovies(prevTotal => prevTotal + 1);
+                    // No actualices la lista en el frontend localmente
                 } else {
                     alert('Error al agregar la película');
                 }
@@ -99,6 +98,24 @@ const AdminPelis = () => {
             }
         } else {
             alert('Por favor, complete todos los campos obligatorios.');
+        }
+    };
+
+    const handleDelete = async (movieID) => {
+        const confirmDelete = window.confirm("¿Estás seguro de que quieres eliminar esta película?");
+        if (!confirmDelete) return;
+
+        try {
+            const response = await axios.delete(`http://localhost:8080/movies/${movieID}`);
+            if (response.status === 200) {
+                alert("Película eliminada con éxito.");
+                setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== movieID));
+            } else {
+                alert("Error al eliminar la película.");
+            }
+        } catch (error) {
+            console.error("Error al eliminar la película:", error);
+            alert("Hubo un error al eliminar la película.");
         }
     };
 
@@ -168,12 +185,15 @@ const AdminPelis = () => {
                             <th className="py-3 px-6 text-left">Género</th>
                             <th className="py-3 px-6 text-left">Director</th>
                             <th className="py-3 px-6 text-left">Descripción</th>
+                            <th className="py-3 px-6 text-center">Acción</th>
+
                         </tr>
+
                     </thead>
                     <tbody className="text-gray-800">
                         {filteredMovies.length === 0 ? (
                             <tr>
-                                <td colSpan="8" className="py-3 px-6 text-center">No se encontraron resultados.</td>
+                                <td colSpan="9" className="py-3 px-6 text-center">No se encontraron resultados.</td>
                             </tr>
                         ) : (
                             currentMovies.map(item => (
@@ -188,10 +208,19 @@ const AdminPelis = () => {
                                     <td className="py-3 px-6 border-b border-gray-200">{item.genre}</td>
                                     <td className="py-3 px-6 border-b border-gray-200">{item.director}</td>
                                     <td className="py-3 px-6 border-b border-gray-200">{item.overview}</td>
+                                    <td className="py-3 px-6 border-b border-gray-200 text-center">
+                                        <button
+                                            onClick={() => handleDelete(item.id)}
+                                            className="btn-eliminar"
+                                        >
+                                            <i className="fas fa-trash-alt mr-1"></i> Eliminar
+                                        </button>
+                                    </td>
                                 </tr>
                             ))
                         )}
                     </tbody>
+
 
                 </table>
             </div>

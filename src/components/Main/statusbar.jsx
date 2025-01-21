@@ -25,22 +25,12 @@ const StatusBar = ({ onButtonClick }) => {
       <div className="status-bar">
         <div className="memflisb">MEMFLIS</div>
 
-        <div className="search-bar">
-          <input
-            id="search"
-            type="text"
-            value={searchTerm}
-            onChange={handleSearch}
-            placeholder="Buscar..."
-          />
-        </div>
-
         <div className="status-bar-buttons">
           <button
             className="status-bar-btn"
             onClick={() => setShowAdminPanel(!showAdminPanel)}
           >
-            Recomendar
+            Enviar Recomendación
           </button>
 
           <button
