@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactSlider from 'react-slider';
 
 export const AdminMovies = () => {
-  const [selectedMovie, setSelectedMovie] = useState(""); // Podrías eliminar esta línea también si no la usas
+  const [selectedMovie, setSelectedMovie] = useState(""); 
   const [user, setUser] = useState("");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(true);

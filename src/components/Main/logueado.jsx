@@ -1,24 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import PeliRecommended from "./pelrecommended";
+
 import StatusBar from "./statusbar";
 import axios from "axios";
 import "../../global.css";
+import PeliculasVistas from "./peliculasVistas";
 
 export const Logueado = () => {
   const [movies, setMovies] = useState([]);
   const [recommendedMovies, setRecommendedMovies] = useState([]);
   const [showRecommended, setShowRecommended] = useState(true);
+  const [watchedMovies, setWatchedMovies] = useState([]);
+  const [showWatchedMovies, setShowWatchedMovies] = useState(true);
   const [randomMovie, setRandomMovie] = useState(null);
   const userID = localStorage.getItem("userID");
 
   useEffect(() => {
+
+    const mockMovies = [
+      { id: 1, series_title: "Interstellar", poster_link: "https://i.imgur.com/mClzJYp.png" },
+      { id: 2, series_title: "Her", poster_link: "https://i.imgur.com/6OD4OjT.png" },
+      { id: 3, series_title: "Joker", poster_link: "https://i.imgur.com/CUhrd1i.png" },
+      { id: 4, series_title: "Maze Runner", poster_link: "https://i.imgur.com/okOFya0.png" },
+      { id: 5, series_title: "Stranger Things", poster_link: "https://i.imgur.com/erTqXbm.png" },
+    ];
+    
+    setRandomMovie(mockMovies[0])
+
     const fetchMovies = async () => {
       try {
         const response = await axios.get('http://localhost:8080/movies/'); 
         if (Array.isArray(response.data.data)) {
           setMovies(response.data.data);
-          setRandomMovie(response.data.data[0]); 
         } else {
           console.error("Los datos recibidos no están en el formato esperado.");
           setMovies([]);
@@ -46,9 +59,19 @@ export const Logueado = () => {
     navigate("/");
   };
 
+    const closeVistas = () => {
+    setShowWatchedMovies(false);
+  };
+
   return (
     <div className="app">
       <StatusBar onButtonClick={goHome} />
+      {showRecommended && (
+        <PeliculasVistas
+          watchedMovies ={watchedMovies}
+          onClose={closeVistas}
+        />
+      )}
       
       <div className="featured-movie">
         {randomMovie && (

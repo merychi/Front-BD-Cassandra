@@ -5,7 +5,7 @@ import axios from 'axios';
 const AdminUsuarios = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [users, setUsers] = useState([]);
-    const [usersPerPage] = useState(10);  // 10 usuarios por página
+    const [usersPerPage] = useState(10); 
     const [totalUsers, setTotalUsers] = useState(0);
     const [searchTerm, setSearchTerm] = useState('');
     

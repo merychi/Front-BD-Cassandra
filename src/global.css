@@ -121,7 +121,7 @@ body::before {
 
 /* Estilo para las películas recomendadas */
 .recommended-list .movie-card {
-  flex: 1 1 calc(33.333% - 10px); /* Igual que las películas normales, pero con una mayor flexibilidad */
+  flex: 1 1 calc(33.333% - 10px); 
 }
 
 .recommended-list .movie-card img {
@@ -130,24 +130,24 @@ body::before {
   object-fit: cover;
 }
 
-/* Hacer que las películas recomendadas se ajusten bien en móviles y pantallas más pequeñas */
+
 @media (max-width: 768px) {
   .movie-card {
-    flex: 1 1 calc(50% - 10px); /* En pantallas pequeñas, cada imagen ocupa el 50% */
+    flex: 1 1 calc(50% - 10px); 
   }
 
   .recommended-list .movie-card {
-    flex: 1 1 calc(50% - 10px); /* Las recomendaciones también ocupan 50% en pantallas más pequeñas */
+    flex: 1 1 calc(50% - 10px); 
   }
 }
 
 @media (max-width: 480px) {
   .movie-card {
-    flex: 1 1 100%; /* En pantallas muy pequeñas, cada imagen ocupa el 100% */
+    flex: 1 1 100%; 
   }
 
   .recommended-list .movie-card {
-    flex: 1 1 100%; /* Las recomendaciones también ocupan el 100% en pantallas muy pequeñas */
+    flex: 1 1 100%; 
   }
 }
 

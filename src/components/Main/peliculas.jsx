@@ -172,7 +172,7 @@ const AdminPelis = () => {
                     </div>
                 </div>
             )}
-            {/* Mostrar lista de peliculas */}
+
             <div className="containerfixx mx-auto px-4 mt-4">
                 <table className="table-auto w-full">
                     <thead>
